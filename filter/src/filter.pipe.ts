@@ -1,6 +1,6 @@
 import { Injectable, PipeTransform } from "@nestjs/common";
+import { IFilter } from "@prisma-qs/filter-common";
 
-import { IFilter } from "../prisma-filter-common";
 import { IGeneratedFilter } from "./filter.interface";
 import { FilterParser } from "./filter.parser";
 

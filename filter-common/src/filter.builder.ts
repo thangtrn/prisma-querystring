@@ -49,7 +49,7 @@ export class FilterBuilder<T = any> {
 
   private static buildQueryString(
     paramName: string,
-    array: Array<ISingleFilter | ISingleOrder>
+    array: Array<ISingleFilter | ISingleOrder>,
   ): string | null {
     const parts: Array<string> = [];
     for (let i = 0; i < array.length; i++) {
@@ -66,7 +66,7 @@ export class FilterBuilder<T = any> {
         if (Array.isArray(value)) {
           if (value.length === 0) {
             parts.push(
-              `${encodeURIComponent(paramName)}[${i}][${encodeURIComponent(key)}]=`
+              `${encodeURIComponent(paramName)}[${i}][${encodeURIComponent(key)}]=`,
             );
           }
           for (let y = 0; y < value.length; y++) {
@@ -76,15 +76,15 @@ export class FilterBuilder<T = any> {
             const valueY = value[y];
             parts.push(
               `${encodeURIComponent(paramName)}[${i}][${encodeURIComponent(
-                key
-              )}][]=${encodeURIComponent(valueY != null ? valueY.toString() : "")}`
+                key,
+              )}][]=${encodeURIComponent(valueY != null ? valueY.toString() : "")}`,
             );
           }
         } else {
           parts.push(
             `${encodeURIComponent(paramName)}[${i}][${encodeURIComponent(
-              key
-            )}]=${encodeURIComponent(value != null ? value.toString() : "")}`
+              key,
+            )}]=${encodeURIComponent(value != null ? value.toString() : "")}`,
           );
         }
       }
@@ -108,7 +108,7 @@ export class FilterBuilder<T = any> {
   public addFilter(
     field: keyof T & string,
     type: FilterOperationType,
-    value: any
+    value: any,
   ): this {
     if (this.filter.filter == null) {
       this.filter.filter = [];
@@ -130,7 +130,7 @@ export class FilterBuilder<T = any> {
   public addOrFilter(
     field: keyof T & string,
     type: FilterOperationType,
-    value: any
+    value: any,
   ): this {
     if (this.filter.orFilter == null) {
       this.filter.orFilter = [];
@@ -190,7 +190,7 @@ export class FilterBuilder<T = any> {
   public requestPage(page: number): this {
     if (this.filter.limit == null) {
       throw new Error(
-        "requestPage can only be called after calling setPageSize"
+        "requestPage can only be called after calling setPageSize",
       );
     }
     if (page <= 0) {

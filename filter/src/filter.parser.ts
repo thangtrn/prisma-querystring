@@ -4,9 +4,10 @@ import {
   IFilter,
   ISingleFilter,
   ISingleOrder,
-} from "../prisma-filter-common";
-import { GeneratedFindOptions, OrderBy } from "./filter.interface";
+} from "@prisma-qs/filter-common";
+
 import { ArrayFilter, IntFilter, StringFilter } from "./prisma.type";
+import { GeneratedFindOptions, OrderBy } from "./filter.interface";
 
 export class FilterParser<TDto, TWhereInput> {
   /**
@@ -20,11 +21,11 @@ export class FilterParser<TDto, TWhereInput> {
       [p in keyof TDto]?: keyof TWhereInput & string;
     },
     private readonly allowAllFields = false,
-    private readonly defaultOrderBy: OrderBy<TWhereInput> = [],
+    private readonly defaultOrderBy: OrderBy<TWhereInput> = []
   ) {}
 
   public generateQueryFindOptions(
-    filterDto: IFilter<TDto>,
+    filterDto: IFilter<TDto>
   ): GeneratedFindOptions<TWhereInput> {
     if (filterDto.filter == null) {
       filterDto.filter = [];
@@ -41,7 +42,7 @@ export class FilterParser<TDto, TWhereInput> {
 
     if (this.defaultOrderBy.length > 0) {
       const existingOrderFields = new Set(
-        generatedOrder.flatMap((o) => Object.keys(o)),
+        generatedOrder.flatMap((o) => Object.keys(o))
       );
       // Add default orderBy only if the key does not exist already
       for (const orderByRow of this.defaultOrderBy) {
@@ -61,7 +62,7 @@ export class FilterParser<TDto, TWhereInput> {
 
   private generateWhere(
     filter: Array<ISingleFilter<TDto>> = [],
-    orFilter: Array<ISingleFilter<TDto>> = [],
+    orFilter: Array<ISingleFilter<TDto>> = []
   ): TWhereInput & { OR?: TWhereInput[] } {
     const where: TWhereInput & { OR?: TWhereInput[] } = Object.create(null);
 
@@ -91,7 +92,7 @@ export class FilterParser<TDto, TWhereInput> {
       }
       Object.assign(
         currentWhere,
-        this.generateWhereValue(filterEntry.type, filterEntry.value),
+        this.generateWhereValue(filterEntry.type, filterEntry.value)
       );
     }
 
@@ -122,7 +123,7 @@ export class FilterParser<TDto, TWhereInput> {
       const lastPart = dbFieldNameParts[dbFieldNameParts.length - 1];
       currentWhere[lastPart] = this.generateWhereValue(
         filterEntry.type,
-        filterEntry.value,
+        filterEntry.value
       );
 
       if (!where.OR) {
@@ -136,7 +137,7 @@ export class FilterParser<TDto, TWhereInput> {
 
   private generateWhereValue(
     type: FilterOperationType,
-    value: any,
+    value: any
   ): { [p in keyof IntFilter | keyof StringFilter]?: any } {
     const queryValue = this.getFormattedQueryValueForType(value, type);
     if (
@@ -181,7 +182,7 @@ export class FilterParser<TDto, TWhereInput> {
 
   private getFormattedQueryValueForType(
     rawValue: any,
-    type: FilterOperationType,
+    type: FilterOperationType
   ):
     | string
     | number
@@ -197,11 +198,11 @@ export class FilterParser<TDto, TWhereInput> {
           (value) =>
             typeof value !== "string" &&
             typeof value !== "number" &&
-            typeof value !== "boolean",
+            typeof value !== "boolean"
         )
       ) {
         throw new Error(
-          `Array filter value must be an Array<string|number|boolean>`,
+          `Array filter value must be an Array<string|number|boolean>`
         );
       }
       if (
@@ -282,7 +283,7 @@ export class FilterParser<TDto, TWhereInput> {
   }
 
   private getOpByType(
-    type: FilterOperationType,
+    type: FilterOperationType
   ): keyof IntFilter | keyof StringFilter | keyof ArrayFilter {
     switch (type) {
       case FilterOperationType.Eq:
@@ -333,7 +334,7 @@ export class FilterParser<TDto, TWhereInput> {
   }
 
   private generateOrder(
-    order: Array<ISingleOrder<TDto>>,
+    order: Array<ISingleOrder<TDto>>
   ): Array<{ [p in keyof TWhereInput]?: FilterOrder }> {
     const generatedOrder = [];
     for (const orderEntry of order) {
