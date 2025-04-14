@@ -4,7 +4,7 @@ import {
   IFilter,
   ISingleFilter,
   ISingleOrder,
-} from "@prisma-qs/filter-common";
+} from "prisma-filter-common";
 
 import { ArrayFilter, IntFilter, StringFilter } from "./prisma.type";
 import { GeneratedFindOptions, OrderBy } from "./filter.interface";

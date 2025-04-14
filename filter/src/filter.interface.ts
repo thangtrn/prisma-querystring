@@ -1,4 +1,4 @@
-import { FilterOrder, IFilter } from "@prisma-qs/filter-common";
+import { FilterOrder, IFilter } from "prisma-filter-common";
 
 export type OrderBy<TWhereInput> = Array<{
   // This can be "any" because we might order by relations, therefore this will be an object

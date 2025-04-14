@@ -13,13 +13,13 @@ This library helps you easily create dynamic `filter` queries for Prisma. It sup
 Sử dụng Yarn:
 
 ```bash
-yarn add @prisma-qs/filter
+yarn add prisma-filter
 ```
 
 Sử dụng Npm:
 
 ```bash
-npm i @prisma-qs/filter
+npm i prisma-filter
 ```
 
 ### Install - Frontend
@@ -27,13 +27,13 @@ npm i @prisma-qs/filter
 Sử dụng Yarn:
 
 ```bash
-yarn add @prisma-qs/filter-common
+yarn add prisma-filter-common
 ```
 
 Sử dụng Npm:
 
 ```bash
-npm i @prisma-qs/filter-common
+npm i prisma-filter-common
 ```
 
 ### Building a filter

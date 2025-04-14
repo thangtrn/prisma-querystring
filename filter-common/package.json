@@ -1,5 +1,5 @@
 {
-  "name": "@prisma-qs/filter-common",
+  "name": "prisma-filter-common",
   "version": "1.0.0",
   "description": "The PrismaQueryFilter package allows the frontend to request filtered, sorted, and paginated data via query parameters. The package automatically generates Prisma findOptions from these query parameters, which can then be directly used in the backend.",
   "main": "libs/index.js",

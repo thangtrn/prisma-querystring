@@ -1,4 +1,4 @@
-export * from "@prisma-qs/filter-common";
+export * from "prisma-filter-common";
 export * from "./filter.parser";
 export * from "./direct.filter.pipe";
 export * from "./all.filter.pipe.unsafe";
