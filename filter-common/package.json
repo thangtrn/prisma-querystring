@@ -26,5 +26,8 @@
   },
   "files": [
     "/libs"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
