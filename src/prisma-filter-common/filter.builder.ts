@@ -15,18 +15,29 @@ export class FilterBuilder<T = any> {
     if (filter.offset != null) {
       parts.push(`offset=${filter.offset}`);
     }
+
     if (filter.limit != null) {
       parts.push(`limit=${filter.limit}`);
     }
+
     const filterQuery = filter.filter
       ? FilterBuilder.buildQueryString("filter", filter.filter)
       : null;
     if (filterQuery != null) {
       parts.push(filterQuery);
     }
+
+    const orFilterQuery = filter.orFilter
+      ? FilterBuilder.buildQueryString("orFilter", filter.orFilter)
+      : null;
+    if (orFilterQuery != null) {
+      parts.push(orFilterQuery);
+    }
+
     const orderQuery = filter.order
       ? FilterBuilder.buildQueryString("order", filter.order)
       : null;
+
     if (orderQuery != null) {
       parts.push(orderQuery);
     }
