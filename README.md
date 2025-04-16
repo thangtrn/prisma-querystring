@@ -10,13 +10,13 @@ This library helps you easily create dynamic `filter` queries for Prisma. It sup
 
 ### Install - Backend
 
-Sử dụng Yarn:
+With Yarn:
 
 ```bash
 yarn add prisma-filter
 ```
 
-Sử dụng Npm:
+With Npm:
 
 ```bash
 npm i prisma-filter
@@ -24,13 +24,13 @@ npm i prisma-filter
 
 ### Install - Frontend
 
-Sử dụng Yarn:
+With Yarn:
 
 ```bash
 yarn add prisma-filter-common
 ```
 
-Sử dụng Npm:
+With Npm:
 
 ```bash
 npm i prisma-filter-common
